@@ -32,7 +32,7 @@
                 <TextView
                     android:id="@+id/jKamar"
                     android:layout_width="wrap_content"
-                    android:text="Standar Room"
+                    android:text="Suite Room"
                     android:fontFamily="@font/semi_bold"
                     android:gravity="center"
                     android:textSize="20dp"

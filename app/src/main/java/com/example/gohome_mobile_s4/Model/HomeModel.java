@@ -23,4 +23,7 @@ public class HomeModel {
     }
 
 
+    public int getType() {
+        return 0;
+    }
 }

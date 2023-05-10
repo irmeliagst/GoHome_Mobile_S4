@@ -8,7 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="350dp"
         android:layout_marginTop="35dp"
-        android:src="@drawable/img1" />
+        android:src="@drawable/logohome" />
 
     <TextView
         android:id="@+id/titletext"

@@ -20,7 +20,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.Viewholder> {
     @NonNull
     @Override
     public HomeAdapter.Viewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.popular_item, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.kamar_item, parent, false);
         return new HomeAdapter.Viewholder(view);
     }
 
@@ -48,8 +48,6 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.Viewholder> {
             item_image = itemView.findViewById(R.id.item_image);
             Jkamar = itemView.findViewById(R.id.jKamar);
             harga_room = itemView.findViewById(R.id.harga);
-
-
         }
 
         public void setData(int resource, String jKamar, String harga) {

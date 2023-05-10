@@ -31,9 +31,12 @@ public class homeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
-        recyclerView = view.findViewById(R.id.popular_tampil);
+        recyclerView = view.findViewById(R.id.kamar_tampil);
         // Inisialisasi data
         HomeModelList = new ArrayList<>();
+        HomeModelList.add(new HomeModel(R.drawable.imgsiti, "Suite Room", "500.000"));
+        HomeModelList.add(new HomeModel(R.drawable.imgsiti, "Suite Room", "500.000"));
+        HomeModelList.add(new HomeModel(R.drawable.imgsiti, "Suite Room", "500.000"));
         HomeModelList.add(new HomeModel(R.drawable.imgsiti, "Suite Room", "500.000"));
         HomeModelList.add(new HomeModel(R.drawable.imgsiti, "Suite Room", "500.000"));
         HomeModelList.add(new HomeModel(R.drawable.imgsiti, "Suite Room", "500.000"));
