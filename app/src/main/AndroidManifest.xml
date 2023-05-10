@@ -12,7 +12,29 @@
         android:theme="@style/Theme.GoHome_Mobile_S4"
         tools:targetApi="31">
         <activity
+            android:name=".EdtprofActivity"
+            android:label="Edit Profile"
+            android:gravity="center"
+            android:exported="false" />
+        <activity
+            android:name=".FaqActivity"
+            android:label="Faq"
+            android:gravity="center"
+            android:exported="false" />
+        <activity
+            android:name=".BottomnavActivity"
+            android:theme="@style/Theme.GoHome_Mobile_S4.NoActionBar2"
+            android:exported="false" />
+        <activity
+            android:name=".RegisActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LoginActivity"
+            android:theme="@style/Theme.GoHome_Mobile_S4.NoActionBar2"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
+            android:theme="@style/Theme.GoHome_Mobile_S4.NoActionBar2"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

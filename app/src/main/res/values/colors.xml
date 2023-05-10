@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>
@@ -7,4 +7,20 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    //main color
+    <color name="Primary">#FF019DAA</color>
+    <color name="navbarColor">#FF247980</color>
+    <color name ="transColor">#00FFFFFF</color>
+    <color name ="profileColor">#FFD9D9D9</color>
+    <color name ="greyColor">#FFF5F7F7</color>
+    <color name ="btnColor">#FFF5F5F5</color>
+    <color name="button_pressed">#FDFCFC</color>
+    <color name="button_focused">#C9019DAA</color>
+    //onboarding colors
+    <color name="background">#FFF0F4F3</color>
+    <color name="buttontext">#FF50C2C9</color>
+    //indicator color
+    <color name="inactive">#FFC4C4C4</color>
+    <color name="active">#FF50C2C9</color>
+    <color name="mtrl_textinput_default_box_stroke_color" tools:override="true">@color/Primary</color>
 </resources>
