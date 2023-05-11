@@ -1,4 +1,5 @@
 package com.example.gohome_mobile_s4.Adapter;
+import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,12 +12,21 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.gohome_mobile_s4.DetailKamarActivity;
 import com.example.gohome_mobile_s4.Model.HomeModel;
 import com.example.gohome_mobile_s4.R;
+import com.example.gohome_mobile_s4.retrofit.ApiInterface;
 
 import java.util.List;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
 public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.Viewholder> {
+    private Context context;
     private List<HomeModel> HomeModelList;
-    public HomeAdapter(List<HomeModel>HomeModelList){
+    public HomeAdapter(Context context, List<HomeModel> HomeModelList){
+        this.context = context;
         this.HomeModelList = HomeModelList;
     }
 
@@ -24,14 +34,14 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.Viewholder> {
     @Override
     public HomeAdapter.Viewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.kamar_item, parent, false);
-        return new HomeAdapter.Viewholder(view);
+        return new Viewholder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull HomeAdapter.Viewholder holder, int position) {
-        int item_image = HomeModelList.get(position).getItem_image();
-        String jKamar = HomeModelList.get(position).getJkamar();
-        String harga = HomeModelList.get(position).getHarga();
+       holder.jenis_kamar.setText(HomeModelList.get(position).getjenis_kamar());
+       holder.harga.setText(HomeModelList.get(position).getHarga());
+       holder.item_image.setImageResource(HomeModelList.get(position).getItem_image());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -49,22 +59,18 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.Viewholder> {
         }
         return 0;
     }
-    public  class  Viewholder extends RecyclerView.ViewHolder{
-        private ImageView item_image;
-        private TextView Jkamar;
-        private TextView harga_room;
+
+
+    public  static class  Viewholder extends RecyclerView.ViewHolder {
+        public ImageView item_image;
+        public TextView jenis_kamar, harga;
 
         public Viewholder(@NonNull View itemView) {
             super(itemView);
             item_image = itemView.findViewById(R.id.item_image);
-            Jkamar = itemView.findViewById(R.id.jKamar);
-            harga_room = itemView.findViewById(R.id.harga);
+            jenis_kamar = itemView.findViewById(R.id.jKamar);
+            harga= itemView.findViewById(R.id.harga);
         }
 
-        public void setData(int resource, String jKamar, String harga) {
-            item_image.setImageResource(resource);
-            Jkamar.setText(jKamar);
-            harga_room.setText(harga);
-        }
     }
 }

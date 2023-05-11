@@ -33,12 +33,13 @@
         android:id="@+id/kasur"
         android:layout_width="115dp"
         android:layout_height="28dp"
+        android:layout_marginTop="56dp"
         android:text="Single Bed"
         android:textColor="#333333"
         android:textSize="18sp"
+        app:layout_constraintTop_toTopOf="@+id/tipekamar"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="67dp"
-        tools:layout_editor_absoluteY="388dp"></TextView>
+        tools:layout_editor_absoluteX="67dp"></TextView>
 
     <ImageView
         android:id="@+id/imageView3"
@@ -53,23 +54,26 @@
         android:id="@+id/harga"
         android:layout_width="115dp"
         android:layout_height="28dp"
+        android:layout_marginStart="198dp"
+        android:layout_marginLeft="198dp"
         android:text="Rp. 300.000"
         android:textColor="#333333"
         android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/kasur"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="265dp"
         tools:layout_editor_absoluteY="388dp"></TextView>
 
     <TextView
         android:id="@+id/deskripsi"
         android:layout_width="360dp"
         android:layout_height="208dp"
+        android:layout_marginTop="43dp"
         android:text="Deskripsi kamar"
         android:textColor="#333333"
         android:textSize="20sp"
+        app:layout_constraintTop_toTopOf="@+id/harga"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="32dp"
-        tools:layout_editor_absoluteY="431dp"></TextView>
+        tools:layout_editor_absoluteX="32dp"></TextView>
 
     <Button
         android:id="@+id/btnpesan"

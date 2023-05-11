@@ -4,21 +4,25 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitClient {
+    private static RetrofitClient instance = null;
+    private ApiInterface myApi;
 
-    private static Retrofit retrofit;
-    private static final String BASE_URL = " pp/";
+    private RetrofitClient() {
+        Retrofit retrofit = new Retrofit.Builder().baseUrl(ApiInterface.BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        myApi = retrofit.create(ApiInterface.class);
+    }
 
-    public static Retrofit getRetrofitInstance(){
-
-        if(retrofit == null){
-            retrofit = new Retrofit.Builder()
-                    .baseUrl(BASE_URL)
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .build();
-
+    public static synchronized RetrofitClient getInstance() {
+        if (instance == null) {
+            instance = new RetrofitClient();
         }
-        return retrofit;
+        return instance;
+    }
 
+    public ApiInterface getMyApi() {
+        return myApi;
     }
 
 }

@@ -40,6 +40,7 @@
             android:theme="@style/Theme.GoHome_Mobile_S4.NoActionBar2"
             android:exported="true">
 
+
         </activity>
         <activity
             android:name=".EdtprofActivity"
@@ -65,11 +66,13 @@
         <activity
             android:name=".MainActivity"
             android:theme="@style/Theme.GoHome_Mobile_S4.NoActionBar2"
-            android:exported="true"> <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
+            android:exported="true">
 
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
 
     </application>
