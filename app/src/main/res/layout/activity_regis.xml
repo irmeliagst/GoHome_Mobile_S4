@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/Primary"
+    android:background ="#187F83"
     tools:context=".RegisActivity">
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
@@ -181,7 +181,7 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="16dp"
                 android:text="Sign Up"
-                app:backgroundTint="@color/Primary"
+                app:backgroundTint="#187F83"
                 app:cornerRadius="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

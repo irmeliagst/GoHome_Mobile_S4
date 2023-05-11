@@ -15,7 +15,7 @@ public class ViewpagAdaptor extends PagerAdapter {
 
     Context context;
     int images[]={
-            R.drawable.img1,
+            R.drawable.logohome,
             R.drawable.img2,
             R.drawable.img3
     };

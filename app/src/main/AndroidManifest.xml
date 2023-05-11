@@ -2,6 +2,22 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="16" />
+
+    <supports-screens
+        android:anyDensity="true"
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:resizeable="true"
+        android:smallScreens="true"
+        android:xlargeScreens="true" />
+
+    <uses-feature android:glEsVersion="0x00010001" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -11,6 +27,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GoHome_Mobile_S4"
         tools:targetApi="31">
+        <activity
+            android:name=".BuktiTransferActivity"
+            android:theme="@style/Theme.GoHome_Mobile_S4.NoActionBar2"
+            android:exported="false" />
+        <activity
+            android:name=".BookingActivity"
+            android:theme="@style/Theme.GoHome_Mobile_S4.NoActionBar2"
+            android:exported="false" />
+        <activity
+            android:name=".DetailKamarActivity"
+            android:theme="@style/Theme.GoHome_Mobile_S4.NoActionBar2"
+            android:exported="true">
+
+        </activity>
         <activity
             android:name=".EdtprofActivity"
             android:label="Edit Profile"
@@ -35,13 +65,13 @@
         <activity
             android:name=".MainActivity"
             android:theme="@style/Theme.GoHome_Mobile_S4.NoActionBar2"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:exported="true"> <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
         </activity>
+
     </application>
 
 </manifest>

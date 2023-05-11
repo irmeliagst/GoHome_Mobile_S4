@@ -1,5 +1,6 @@
 package com.example.gohome_mobile_s4;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -46,6 +47,14 @@ public class homeFragment extends Fragment {
         recyclerView.setLayoutManager(layoutManager);
         myAdapter = new HomeAdapter(HomeModelList);
         recyclerView.setAdapter(myAdapter);
+        recyclerView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(),DetailKamarActivity.class);
+                startActivity(intent);
+            }
+        });
+
         return view;
     }
 }

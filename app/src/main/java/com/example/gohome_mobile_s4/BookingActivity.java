@@ -2,7 +2,9 @@ package com.example.gohome_mobile_s4;
 
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -13,20 +15,31 @@ import java.util.Calendar;
 import java.util.Locale;
 
 public class BookingActivity extends AppCompatActivity {
-    private Button btnCheckin, btnCheckout, btnBooking;
+    Button btnbooking;
+    private Button btnCheckin, btnCheckout;
     private TextView tipeKamar, noKamar, checkin, checkout, bookingId, namaPlg, nik;
     private ImageView gambarKamar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R
-                .layout.activity_booking);
+        setContentView(R.layout.activity_booking);
+
+        // Inisialisasi tombol "Book Room"
+        btnbooking = findViewById(R.id.btnbooking);
+        btnbooking.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Arahkan ke halaman pemesanan (bukti transfer)
+                Intent intent = new Intent(BookingActivity.this,BuktiTransferActivity.class);
+                startActivity(intent);
+            }
+        });
 
         // Menghubungkan variabel dengan view
         btnCheckin = findViewById(R.id.btncheckin);
         btnCheckout = findViewById(R.id.btncheckout);
-        btnBooking = findViewById(R.id.btnbooking);
+//        btnbooking = findViewById(R.id.btnbooking);
         tipeKamar = findViewById(R.id.tipekamar);
         noKamar = findViewById(R.id.nokamar);
         checkin = findViewById(R.id.checkin);
@@ -77,17 +90,17 @@ public class BookingActivity extends AppCompatActivity {
         });
 
         // Menambahkan onClickListener ke btnBooking
-        btnBooking.setOnClickListener(view -> {
-            // Melakukan proses booking dan menampilkan ID booking pada TextView bookingId
-            String idBooking = doBooking();
-            bookingId.setText(idBooking);
-        });
+//        btnbooking.setOnClickListener(view -> {
+//            // Melakukan proses booking dan menampilkan ID booking pada TextView bookingId
+//            String idBooking = doBooking();
+//            bookingId.setText(idBooking);
+//        });
     }
 
-    private String doBooking() {
-        // Menyimpan data booking pada database atau web service
-        // Mengembalikan ID booking
-        return "ABC123";
-    }
+//    private String doBooking() {
+//        // Menyimpan data booking pada database atau web service
+//        // Mengembalikan ID booking
+//        return "ABC123";
+//    }
 }
 

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".LoginActivity"
-    android:background="@color/Primary">
+    android:background="#187F83">
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
         android:layout_width="wrap_content"
@@ -99,7 +99,7 @@
                 android:layout_marginTop="32dp"
                 android:layout_marginEnd="16dp"
                 android:text="Sign In"
-                app:backgroundTint="@color/Primary"
+                app:backgroundTint="#187F83"
                 app:cornerRadius="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -130,7 +130,7 @@
                     android:layout_weight="0"
                     android:fontFamily="@font/medium"
                     android:text="Sign Up"
-                    android:textColor="@color/active" />
+                    android:textColor= "#187F83"/>
             </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>

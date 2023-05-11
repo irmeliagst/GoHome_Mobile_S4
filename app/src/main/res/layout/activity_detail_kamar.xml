@@ -8,14 +8,13 @@
 
     <ImageView
         android:id="@+id/imageView5"
-        android:layout_width="0dp"
-        android:layout_height="411dp"
-        android:layout_marginTop="0dp"
+        android:layout_width="425dp"
+        android:layout_height="284dp"
         android:adjustViewBounds="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView2"
-        app:srcCompat="@drawable/kamar1" />
+        app:srcCompat="@drawable/imgsiti" />
 
     <TextView
         android:id="@+id/tipekamar"
@@ -23,7 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginLeft="24dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="48dp"
         android:text="Tipe A Deluxe "
         android:textColor="#333333"
         android:textSize="24sp"
@@ -38,17 +37,17 @@
         android:textColor="#333333"
         android:textSize="18sp"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="72dp"
-        tools:layout_editor_absoluteY="490dp"></TextView>
+        tools:layout_editor_absoluteX="67dp"
+        tools:layout_editor_absoluteY="388dp"></TextView>
 
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="24dp"
         android:layout_height="24dp"
+        tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="232dp"
-        tools:layout_editor_absoluteY="494dp"
-        tools:srcCompat="@drawable/ic_local_offer"
-        tools:ignore="MissingConstraints" />
+        tools:layout_editor_absoluteY="392dp"
+        tools:srcCompat="@drawable/ic_local_offer" />
 
     <TextView
         android:id="@+id/harga"
@@ -59,18 +58,18 @@
         android:textSize="18sp"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="265dp"
-        tools:layout_editor_absoluteY="490dp"></TextView>
+        tools:layout_editor_absoluteY="388dp"></TextView>
 
     <TextView
         android:id="@+id/deskripsi"
-        android:layout_width="349dp"
-        android:layout_height="97dp"
+        android:layout_width="360dp"
+        android:layout_height="208dp"
         android:text="Deskripsi kamar"
         android:textColor="#333333"
         android:textSize="20sp"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="30dp"
-        tools:layout_editor_absoluteY="556dp"></TextView>
+        tools:layout_editor_absoluteX="32dp"
+        tools:layout_editor_absoluteY="431dp"></TextView>
 
     <Button
         android:id="@+id/btnpesan"
@@ -94,8 +93,8 @@
         android:id="@+id/imageView4"
         android:layout_width="35dp"
         android:layout_height="32dp"
-        tools:layout_editor_absoluteX="32dp"
-        tools:layout_editor_absoluteY="490dp"
-        tools:srcCompat="@drawable/ic_king_bed"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="24dp"
+        tools:layout_editor_absoluteY="388dp"
+        tools:srcCompat="@drawable/ic_king_bed" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -62,7 +62,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="16dp"
         android:text="Simpan"
-        app:backgroundTint="@color/Primary"
+        app:backgroundTint="#187F83"
         app:cornerRadius="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

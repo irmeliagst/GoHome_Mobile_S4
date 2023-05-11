@@ -17,6 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="65dp"
             android:background="@color/Primary"
+            app:backgroundTint="#187F83"
             android:fontFamily="@font/semi_bold"
             android:gravity="center"
             android:text="Beranda"

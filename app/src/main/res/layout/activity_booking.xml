@@ -53,7 +53,7 @@
         android:layout_marginTop="16dp"
         android:text="Booking"
         android:textColor="@color/black"
-        android:textSize="24sp"
+        android:textSize="28sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -77,28 +77,25 @@
         android:id="@+id/gambarkamar"
         android:layout_width="129dp"
         android:layout_height="123dp"
-        android:layout_marginStart="108dp"
-        android:layout_marginLeft="108dp"
+        android:layout_marginStart="242dp"
+        android:layout_marginLeft="242dp"
         android:layout_marginTop="136dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/tipekamar"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/beranda"
         tools:ignore="MissingConstraints"
-        tools:srcCompat="@drawable/kamar1" />
+        tools:srcCompat="@drawable/imgsiti" />
 
     <Button
         android:id="@+id/btnbooking"
-        android:layout_width="384dp"
-        android:layout_height="38dp"
+        android:layout_width="361dp"
+        android:layout_height="42dp"
         android:text="Booking"
         app:backgroundTint="#187F83"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.421"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nokamar"
-        app:layout_constraintVertical_bias="0.171" />
+        tools:layout_editor_absoluteX="25dp"
+        tools:layout_editor_absoluteY="346dp" />
 
     <TextView
         android:id="@+id/checkin"
