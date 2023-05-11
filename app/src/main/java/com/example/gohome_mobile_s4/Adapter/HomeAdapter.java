@@ -1,4 +1,5 @@
 package com.example.gohome_mobile_s4.Adapter;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -6,6 +7,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.gohome_mobile_s4.DetailKamarActivity;
 import com.example.gohome_mobile_s4.Model.HomeModel;
 import com.example.gohome_mobile_s4.R;
 
@@ -29,6 +32,14 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.Viewholder> {
         int item_image = HomeModelList.get(position).getItem_image();
         String jKamar = HomeModelList.get(position).getJkamar();
         String harga = HomeModelList.get(position).getHarga();
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+              Intent intent = new Intent(v.getContext(), DetailKamarActivity.class);
+              v.getContext().startActivity(intent);
+
+            }
+        });
     }
 
     @Override

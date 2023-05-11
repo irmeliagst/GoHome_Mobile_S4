@@ -47,13 +47,7 @@ public class homeFragment extends Fragment {
         recyclerView.setLayoutManager(layoutManager);
         myAdapter = new HomeAdapter(HomeModelList);
         recyclerView.setAdapter(myAdapter);
-        recyclerView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(),DetailKamarActivity.class);
-                startActivity(intent);
-            }
-        });
+
 
         return view;
     }

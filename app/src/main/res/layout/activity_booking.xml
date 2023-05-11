@@ -92,10 +92,12 @@
         android:id="@+id/btnbooking"
         android:layout_width="361dp"
         android:layout_height="42dp"
-        android:text="Booking"
+        android:layout_marginTop="64dp"
+        android:text="booking"
         app:backgroundTint="#187F83"
-        tools:layout_editor_absoluteX="25dp"
-        tools:layout_editor_absoluteY="346dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nokamar" />
 
     <TextView
         android:id="@+id/checkin"
