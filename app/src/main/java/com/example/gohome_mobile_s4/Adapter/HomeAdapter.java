@@ -41,7 +41,6 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.Viewholder> {
     public void onBindViewHolder(@NonNull HomeAdapter.Viewholder holder, int position) {
        holder.jenis_kamar.setText(HomeModelList.get(position).getjenis_kamar());
        holder.harga.setText(HomeModelList.get(position).getHarga());
-       holder.item_image.setImageResource(HomeModelList.get(position).getItem_image());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
