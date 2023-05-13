@@ -1,9 +1,9 @@
 package com.example.gohome_mobile_s4.retrofit;
 
 import com.example.gohome_mobile_s4.Model.HomeModel;
-import com.example.gohome_mobile_s4.Model.TransaksiModel;
+import com.example.gohome_mobile_s4.Model.register.Register;
+import com.example.gohome_mobile_s4.Model.transaksi.TransaksiModelItem;
 import com.example.gohome_mobile_s4.Model.login.Data;
-import com.example.gohome_mobile_s4.Model.register.RegisterRespon;
 
 import java.util.List;
 
@@ -24,7 +24,7 @@ public interface ApiInterface {
 
     @FormUrlEncoded
     @POST("register")
-    Call<RegisterRespon>register(
+    Call<Register>register(
             @Field("nik") String nik,
             @Field("nama_pengunjung") String nama_pengunjung,
             @Field("email") String email,
@@ -35,7 +35,7 @@ public interface ApiInterface {
     Call<List<HomeModel>> getKamar();
 
     @GET("transaksi")
-    Call<List<TransaksiModel>> getTransaksi();
+    Call<List<TransaksiModelItem>> getTransaksi();
 
 
     // lets make our model class of json data .

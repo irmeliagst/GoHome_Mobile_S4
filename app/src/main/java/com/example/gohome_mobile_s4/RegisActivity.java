@@ -6,10 +6,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.gohome_mobile_s4.Model.register.RegisterRespon;
+import com.example.gohome_mobile_s4.Model.register.Register;
 import com.example.gohome_mobile_s4.retrofit.RetrofitClient;
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -78,19 +77,19 @@ public class RegisActivity extends AppCompatActivity {
     }
 
     private void register(String nik, String nama_pengunjung, String email, String password, String telepon) {
-        Call<RegisterRespon> call = RetrofitClient.getInstance().getMyApi().register(nik, nama_pengunjung, email, password, telepon);
-        call.enqueue(new Callback<RegisterRespon>() {
+        Call<Register> call = RetrofitClient.getInstance().getMyApi().register(nik, nama_pengunjung, email, password, telepon);
+        call.enqueue(new Callback<Register>() {
             @Override
-            public void onResponse(Call<RegisterRespon> call, Response<RegisterRespon> response) {
+            public void onResponse(Call<Register> call, Response<Register> response) {
                 if (response.isSuccessful() && response.body() != null) {
-                    RegisterRespon registerRespon = response.body();
-                    if (registerRespon.isSuccess()) {
-                        Toast.makeText(RegisActivity.this, registerRespon.getMassage(), Toast.LENGTH_SHORT).show();
+                    Register register = response.body();
+                    if (register.isSuccess()) {
+                        Toast.makeText(RegisActivity.this, register.getMassage(), Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(RegisActivity.this, LoginActivity.class);
                         startActivity(intent);
                         finish();
                     } else {
-                        Toast.makeText(RegisActivity.this, registerRespon.getMassage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(RegisActivity.this, register.getMassage(), Toast.LENGTH_SHORT).show();
                     }
                 } else {
                     Toast.makeText(RegisActivity.this, "Registration failed", Toast.LENGTH_SHORT).show();
@@ -98,7 +97,7 @@ public class RegisActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<RegisterRespon> call, Throwable t) {
+            public void onFailure(Call<Register> call, Throwable t) {
                 Toast.makeText(RegisActivity.this, "Registration failed", Toast.LENGTH_SHORT).show();
             }
         });

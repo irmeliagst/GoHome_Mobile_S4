@@ -9,16 +9,14 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.gohome_mobile_s4.Model.TransaksiModel;
+import com.example.gohome_mobile_s4.Model.transaksi.TransaksiModelItem;
 import com.example.gohome_mobile_s4.R;
 
-import java.text.SimpleDateFormat;
 import java.util.List;
-import java.util.Locale;
 
 public class transaksiAdapter extends RecyclerView.Adapter <transaksiAdapter.Viewholder>{
-    private List<TransaksiModel> transaksiModelList;
-    public transaksiAdapter(Context context, List<TransaksiModel>transaksiModelList){
+    private List<TransaksiModelItem> transaksiModelList;
+    public transaksiAdapter(Context context, List<TransaksiModelItem>transaksiModelList){
         this.transaksiModelList = transaksiModelList;
 
     }
@@ -31,13 +29,16 @@ public class transaksiAdapter extends RecyclerView.Adapter <transaksiAdapter.Vie
 
     @Override
     public void onBindViewHolder(@NonNull transaksiAdapter.Viewholder holder, int position) {
-        final TransaksiModel item = transaksiModelList.get(position);
-        String checkin = item.getTanggal_chekin();
-        String checkout = item.getTanggal_chekout();
-        holder.jenis_kamar.setText(transaksiModelList.get(position).getJenis_kamar());
-        holder.total.setText(transaksiModelList.get(position).getTotal());
-        holder.tanggal_chekin.setText(checkin);
-        holder.tanggal_chekout.setText(checkout);
+        final TransaksiModelItem transaksi = transaksiModelList.get(position);
+//        String checkin = item.getTanggal_chekin();
+//        String checkout = item.getTanggal_chekout();
+        String tanggal_checkin = transaksi.getTanggalCheckin();
+        String tanggal_checkout = transaksi.getTanggalCheckout();
+        holder.jenis_kamar.setText(transaksiModelList.get(position).getJenisKamar());
+        holder.total.setText(String.valueOf(transaksiModelList.get(position).getTotal()));
+        holder.tanggal_chekin.setText(tanggal_checkin);
+        holder.tanggal_chekout.setText(tanggal_checkout);
+
     }
 
     @Override

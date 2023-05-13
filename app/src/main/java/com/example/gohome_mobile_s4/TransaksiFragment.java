@@ -12,7 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.gohome_mobile_s4.Adapter.transaksiAdapter;
-import com.example.gohome_mobile_s4.Model.TransaksiModel;
+import com.example.gohome_mobile_s4.Model.transaksi.TransaksiModelItem;
 import com.example.gohome_mobile_s4.retrofit.RetrofitClient;
 import java.util.List;
 import retrofit2.Call;
@@ -24,7 +24,7 @@ public class TransaksiFragment extends Fragment {
 
     private RecyclerView recyclerView;
     private transaksiAdapter myAdapter;
-    private List<TransaksiModel> transaksiModelList ;
+    private List<TransaksiModelItem> transaksiModelList ;
     LinearLayoutManager layoutManager;
     public TransaksiFragment() {
     }
@@ -44,17 +44,29 @@ public class TransaksiFragment extends Fragment {
     }
 
     private void getTransaksi() {
-        Call<List<TransaksiModel>> call = RetrofitClient.getInstance().getMyApi().getTransaksi();
-       call.enqueue(new Callback<List<TransaksiModel>>() {
+        Call<List<TransaksiModelItem>> call = RetrofitClient.getInstance().getMyApi().getTransaksi();
+       call.enqueue(new Callback<List<TransaksiModelItem>>() {
            @Override
-           public void onResponse(Call<List<TransaksiModel>> call, Response<List<TransaksiModel>> response) {
-               List<TransaksiModel> transaksiModelList = response.body();
+           public void onResponse(Call<List<TransaksiModelItem>> call, Response<List<TransaksiModelItem>> response) {
+               List<TransaksiModelItem> transaksiModelList = response.body();
                transaksiAdapter adapter =  new transaksiAdapter(getContext(), transaksiModelList);
                recyclerView.setAdapter(adapter);
+               System.out.println(response.body().get(0).getTanggalCheckin());
+               for (TransaksiModelItem transaksi : transaksiModelList) {
+                   // Dapatkan tanggal dari objek transaksi
+                   String tanggal_checkin = transaksi.getTanggalCheckin();
+                   String tanggal_checkout = transaksi.getTanggalCheckout();
+//                   String total = transaksi.getTotal();
+
+                   // Lakukan sesuatu dengan tanggal, seperti menampilkannya atau memprosesnya lebih lanjut
+                   System.out.println("Tanggal transaksi checkin: " + tanggal_checkin);
+                   System.out.println("Tanggal transaksi checkout: " + tanggal_checkout);
+//                   System.out.println("Total: " + total);
+               }
            }
 
            @Override
-           public void onFailure(Call<List<TransaksiModel>> call, Throwable t) {
+           public void onFailure(Call<List<TransaksiModelItem>> call, Throwable t) {
 
            }
        });
