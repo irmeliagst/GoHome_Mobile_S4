@@ -31,10 +31,13 @@ public class transaksiAdapter extends RecyclerView.Adapter <transaksiAdapter.Vie
 
     @Override
     public void onBindViewHolder(@NonNull transaksiAdapter.Viewholder holder, int position) {
+        final TransaksiModel item = transaksiModelList.get(position);
+        String checkin = item.getTanggal_chekin();
+        String checkout = item.getTanggal_chekout();
         holder.jenis_kamar.setText(transaksiModelList.get(position).getJenis_kamar());
         holder.total.setText(transaksiModelList.get(position).getTotal());
-        holder.tanggal_chekin.setText(transaksiModelList.get(position).getTanggal_chekin());
-        holder.tanggal_chekout.setText(transaksiModelList.get(position).getTanggal_chekout());
+        holder.tanggal_chekin.setText(checkin);
+        holder.tanggal_chekout.setText(checkout);
     }
 
     @Override

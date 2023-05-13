@@ -3,6 +3,7 @@ package com.example.gohome_mobile_s4.retrofit;
 import com.example.gohome_mobile_s4.Model.HomeModel;
 import com.example.gohome_mobile_s4.Model.TransaksiModel;
 import com.example.gohome_mobile_s4.Model.login.Data;
+import com.example.gohome_mobile_s4.Model.register.RegisterRespon;
 
 import java.util.List;
 
@@ -20,8 +21,19 @@ public interface ApiInterface {
     Call<Data>login(
             @Field("email") String email,
             @Field("password") String password);
+
+    @FormUrlEncoded
+    @POST("register")
+    Call<RegisterRespon>register(
+            @Field("nik") String nik,
+            @Field("nama_pengunjung") String nama_pengunjung,
+            @Field("email") String email,
+            @Field("password") String password,
+            @Field("telepon") String telepon);
+
     @GET("kamar")
     Call<List<HomeModel>> getKamar();
+
     @GET("transaksi")
     Call<List<TransaksiModel>> getTransaksi();
 

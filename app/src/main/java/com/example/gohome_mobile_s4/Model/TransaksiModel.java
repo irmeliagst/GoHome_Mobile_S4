@@ -7,6 +7,27 @@ public class TransaksiModel{
     private  int gambar_kamar;
     private String jenis_kamar;
     private String total;
+
+    public void setGambar_kamar(int gambar_kamar) {
+        this.gambar_kamar = gambar_kamar;
+    }
+
+    public void setJenis_kamar(String jenis_kamar) {
+        this.jenis_kamar = jenis_kamar;
+    }
+
+    public void setTotal(String total) {
+        this.total = total;
+    }
+
+    public void setTanggal_chekin(String tanggal_chekin) {
+        this.tanggal_chekin = tanggal_chekin;
+    }
+
+    public void setTanggal_chekout(String tanggal_chekout) {
+        this.tanggal_chekout = tanggal_chekout;
+    }
+
     private String tanggal_chekin;
     private String tanggal_chekout;
 
