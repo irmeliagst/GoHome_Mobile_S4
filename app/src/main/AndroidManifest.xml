@@ -37,13 +37,6 @@
             android:theme="@style/Theme.GoHome_Mobile_S4.NoActionBar2"
             android:exported="false" />
         <activity
-            android:name=".DetailKamarActivity"
-            android:theme="@style/Theme.GoHome_Mobile_S4.NoActionBar2"
-            android:exported="true">
-
-
-        </activity>
-        <activity
             android:name=".EdtprofActivity"
             android:label="Edit Profile"
             android:gravity="center"

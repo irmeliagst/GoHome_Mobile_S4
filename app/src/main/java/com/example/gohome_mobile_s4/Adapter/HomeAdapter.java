@@ -9,18 +9,11 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.gohome_mobile_s4.DetailKamarActivity;
+import com.example.gohome_mobile_s4.BookingActivity;
 import com.example.gohome_mobile_s4.Model.HomeModel;
 import com.example.gohome_mobile_s4.R;
-import com.example.gohome_mobile_s4.retrofit.ApiInterface;
 
 import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.Viewholder> {
     private Context context;
@@ -44,7 +37,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.Viewholder> {
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-              Intent intent = new Intent(v.getContext(), DetailKamarActivity.class);
+              Intent intent = new Intent(v.getContext(), BookingActivity.class);
               v.getContext().startActivity(intent);
 
             }
