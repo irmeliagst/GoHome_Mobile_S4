@@ -26,6 +26,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.GoHome_Mobile_S4"
+        android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
             android:name=".BuktiTransferActivity"
