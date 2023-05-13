@@ -1,38 +1,65 @@
 package com.example.gohome_mobile_s4.Adapter;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+
 import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.lifecycle.Lifecycle;
-import androidx.viewpager2.adapter.FragmentStateAdapter;
-import com.example.gohome_mobile_s4.CheckinFragment;
-import com.example.gohome_mobile_s4.CheckoutFragment;
-import com.example.gohome_mobile_s4.MenungguFragment;
+import androidx.recyclerview.widget.RecyclerView;
 
-public class transaksiAdapter extends FragmentStateAdapter {
+import com.example.gohome_mobile_s4.Model.TransaksiModel;
+import com.example.gohome_mobile_s4.R;
 
-    public transaksiAdapter(@NonNull Fragment fragment) {
-        super(fragment);
+import java.text.SimpleDateFormat;
+import java.util.List;
+import java.util.Locale;
+
+public class transaksiAdapter extends RecyclerView.Adapter <transaksiAdapter.Viewholder>{
+    private List<TransaksiModel> transaksiModelList;
+    public transaksiAdapter(Context context, List<TransaksiModel>transaksiModelList){
+        this.transaksiModelList = transaksiModelList;
+
     }
-
-    public transaksiAdapter(@NonNull FragmentManager fragmentManager, @NonNull Lifecycle lifecycle) {
-        super(fragmentManager, lifecycle);
-    }
-
     @NonNull
     @Override
-    public Fragment createFragment(int position) {
-        switch (position){
-            case 0: return new MenungguFragment();
-            case 1: return new CheckinFragment();
-            case 2: return new CheckoutFragment();
-            default:return new MenungguFragment();
-        }
+    public transaksiAdapter.Viewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.transaksi_item, parent, false);
+        return new transaksiAdapter.Viewholder(view);
+    }
 
+    @Override
+    public void onBindViewHolder(@NonNull transaksiAdapter.Viewholder holder, int position) {
+        holder.jenis_kamar.setText(transaksiModelList.get(position).getJenis_kamar());
+        holder.total.setText(transaksiModelList.get(position).getTotal());
+        holder.tanggal_chekin.setText(transaksiModelList.get(position).getTanggal_chekin());
+        holder.tanggal_chekout.setText(transaksiModelList.get(position).getTanggal_chekout());
     }
 
     @Override
     public int getItemCount() {
-        return 3;
+        if (transaksiModelList != null) {
+            return transaksiModelList.size();
+        }
+        return 0;
+    }
+
+    public class Viewholder extends RecyclerView.ViewHolder{
+        private ImageView gambar_kamar;
+        private TextView jenis_kamar;
+        private TextView total;
+        private TextView tanggal_chekin;
+        private TextView tanggal_chekout;
+
+
+        public Viewholder(@NonNull View itemView) {
+            super(itemView);
+            gambar_kamar = itemView.findViewById(R.id.imageview);
+            jenis_kamar = itemView.findViewById(R.id.textview);
+            total = itemView.findViewById(R.id.textview2);
+            tanggal_chekin = itemView.findViewById(R.id.textview3);
+            tanggal_chekout = itemView.findViewById(R.id.textview4);
+        }
     }
 }

@@ -1,7 +1,7 @@
 package com.example.gohome_mobile_s4.retrofit;
 
 import com.example.gohome_mobile_s4.Model.HomeModel;
-import com.example.gohome_mobile_s4.Model.MenungguModel;
+import com.example.gohome_mobile_s4.Model.TransaksiModel;
 import com.example.gohome_mobile_s4.Model.login.Data;
 
 import java.util.List;
@@ -13,7 +13,7 @@ import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 public interface ApiInterface {
-    String BASE_URL = "http://192.168.1.58:8000/api/";
+    String BASE_URL = "http://192.168.1.25:8000/api/";
 
     @FormUrlEncoded
     @POST("login")
@@ -23,7 +23,7 @@ public interface ApiInterface {
     @GET("kamar")
     Call<List<HomeModel>> getKamar();
     @GET("transaksi")
-    Call<List<MenungguModel>> getMenunggu();
+    Call<List<TransaksiModel>> getTransaksi();
 
 
     // lets make our model class of json data .

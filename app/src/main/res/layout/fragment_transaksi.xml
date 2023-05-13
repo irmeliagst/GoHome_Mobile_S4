@@ -18,33 +18,12 @@
             android:text="Transaksi"
             android:textColor="@color/black"
             android:textSize="26sp"/>
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tab_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/judul">
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Menunggu">
-            </com.google.android.material.tabs.TabItem>
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Check In">
-            </com.google.android.material.tabs.TabItem>
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Check Out">
-            </com.google.android.material.tabs.TabItem>
-        </com.google.android.material.tabs.TabLayout>
-        <androidx.viewpager2.widget.ViewPager2
-            android:id="@+id/viewpager1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tab_layout">
-        </androidx.viewpager2.widget.ViewPager2>
+       <androidx.recyclerview.widget.RecyclerView
+           android:id="@+id/history"
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:layout_below="@+id/judul">
+       </androidx.recyclerview.widget.RecyclerView>
     </RelativeLayout>
 
 </FrameLayout>
