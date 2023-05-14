@@ -1,9 +1,9 @@
 package com.example.gohome_mobile_s4.retrofit;
 
 import com.example.gohome_mobile_s4.Model.HomeModel;
+import com.example.gohome_mobile_s4.Model.login.Login;
 import com.example.gohome_mobile_s4.Model.register.Register;
 import com.example.gohome_mobile_s4.Model.transaksi.TransaksiModelItem;
-import com.example.gohome_mobile_s4.Model.login.Data;
 
 import java.util.List;
 
@@ -14,11 +14,11 @@ import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 public interface ApiInterface {
-    String BASE_URL = "http://192.168.1.25:8000/api/";
+    String BASE_URL = "http://192.168.43.28:8000/api/";
 
     @FormUrlEncoded
     @POST("login")
-    Call<Data>login(
+    Call<Login>login(
             @Field("email") String email,
             @Field("password") String password);
 

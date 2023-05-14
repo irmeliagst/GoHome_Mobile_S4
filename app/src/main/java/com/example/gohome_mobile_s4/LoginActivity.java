@@ -10,7 +10,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.gohome_mobile_s4.Model.login.Data;
+import com.example.gohome_mobile_s4.Model.login.Login;
+import com.example.gohome_mobile_s4.Model.login.LoginData;
 import com.example.gohome_mobile_s4.retrofit.RetrofitClient;
 import com.google.android.material.textfield.TextInputEditText;
 import retrofit2.Call;
@@ -21,12 +22,14 @@ public class LoginActivity extends AppCompatActivity {
     Button btnLogin;
     TextView txtRegister;
     TextInputEditText emailEdit, passEdit;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         emailEdit = findViewById(R.id.emailEdit);
         passEdit = findViewById(R.id.passEdit);
+        SesionManager sesionManager;
         txtRegister = findViewById(R.id.txtRegister);
         txtRegister.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,13 +54,19 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
+
     private void login(String email, String password) {
-        Call<Data> loginCall = RetrofitClient.getInstance().getMyApi().login(email, password);
-        loginCall.enqueue(new Callback<Data>() {
+        Call<Login> loginCall = RetrofitClient.getInstance().getMyApi().login(email, password);
+        loginCall.enqueue(new Callback<Login>() {
             @Override
-            public void onResponse(Call<Data> call, Response<Data> response) {
+            public void onResponse(Call<Login> call, Response<Login> response) {
                 if (response.body() != null && response.body().isSuccess() && response.isSuccessful()) {
-                    Toast.makeText(LoginActivity.this, response.body().getEmail(), Toast.LENGTH_SHORT).show();
+                    SesionManager sesionManager = new SesionManager(LoginActivity.this);
+                    System.out.println(response.body().getMessage());
+                    LoginData loginData = response.body().getData();
+                    sesionManager.createLoginSession(loginData);
+                    Toast.makeText(LoginActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+
                     Intent intent = new Intent(LoginActivity.this, BottomnavActivity.class);
                     startActivity(intent);
                     finish();
@@ -66,13 +75,14 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(LoginActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
 
                 }
+
             }
 
             @Override
-            public void onFailure(Call<Data> call, Throwable t) {
-                Toast.makeText(LoginActivity.this, t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
-                Log.d("DATA", t.toString());
+            public void onFailure(Call<Login> call, Throwable t) {
+
             }
-       });
+        });
     }
+
 }

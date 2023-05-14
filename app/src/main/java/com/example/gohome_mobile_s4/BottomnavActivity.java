@@ -3,6 +3,7 @@ package com.example.gohome_mobile_s4;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -14,6 +15,8 @@ public class BottomnavActivity extends AppCompatActivity {
     homeFragment homeFragment = new homeFragment();
     TransaksiFragment TransaksiFragment = new TransaksiFragment();
     ProfileFragment ProfileFragment = new ProfileFragment();
+    SesionManager sesionManager;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +24,11 @@ public class BottomnavActivity extends AppCompatActivity {
         setContentView(R.layout.activity_bottomnav);
         bottomNav = findViewById(R.id.bottomNav);
         getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, homeFragment).commit();
+        sesionManager= new SesionManager(BottomnavActivity.this);
+        if(!sesionManager.isLogin()){
+            movetoLogin();
+        }
+
         bottomNav.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -40,4 +48,11 @@ public class BottomnavActivity extends AppCompatActivity {
             }
         });
     }
+    private void movetoLogin(){
+        Intent intent = new Intent (BottomnavActivity.this, LoginActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_NO_HISTORY);
+        startActivity(intent);
+        finish();
+    }
+
 }
