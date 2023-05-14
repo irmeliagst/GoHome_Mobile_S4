@@ -10,9 +10,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.gohome_mobile_s4.Adapter.transaksiAdapter;
-import com.example.gohome_mobile_s4.Model.transaksi.TransaksiModelItem;
+import com.example.gohome_mobile_s4.Model.transaksiNik.DataItem;
+import com.example.gohome_mobile_s4.Model.transaksiNik.TransaksiNik;
+import com.example.gohome_mobile_s4.retrofit.ApiInterface;
 import com.example.gohome_mobile_s4.retrofit.RetrofitClient;
 import java.util.List;
 import retrofit2.Call;
@@ -24,7 +27,9 @@ public class TransaksiFragment extends Fragment {
 
     private RecyclerView recyclerView;
     private transaksiAdapter myAdapter;
-    private List<TransaksiModelItem> transaksiModelList ;
+    SesionManager sesionManager;
+    ApiInterface apiInterface;
+    DataItem dataItem;
     LinearLayoutManager layoutManager;
     public TransaksiFragment() {
     }
@@ -36,38 +41,39 @@ public class TransaksiFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_transaksi, container, false);
         recyclerView = view.findViewById(R.id.history);
+        sesionManager = new SesionManager(requireContext());
         layoutManager = new LinearLayoutManager(getContext());
         layoutManager.setOrientation(RecyclerView.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);
-        getTransaksi();
+        String nik = sesionManager.getUserDetail().get(SesionManager.NIK);
+        apiInterface = RetrofitClient.getInstance().getMyApi();
+        postTransaksi(nik);
         return view;
     }
-
-    private void getTransaksi() {
-        Call<List<TransaksiModelItem>> call = RetrofitClient.getInstance().getMyApi().getTransaksi();
-       call.enqueue(new Callback<List<TransaksiModelItem>>() {
+    private void postTransaksi(String nik) {
+        Call <TransaksiNik> call = RetrofitClient.getInstance().getMyApi().postTransaksi(nik);
+       call.enqueue(new Callback<TransaksiNik>() {
            @Override
-           public void onResponse(Call<List<TransaksiModelItem>> call, Response<List<TransaksiModelItem>> response) {
-               List<TransaksiModelItem> transaksiModelList = response.body();
-               transaksiAdapter adapter =  new transaksiAdapter(getContext(), transaksiModelList);
-               recyclerView.setAdapter(adapter);
-               System.out.println(response.body().get(0).getTanggalCheckin());
-               for (TransaksiModelItem transaksi : transaksiModelList) {
-                   // Dapatkan tanggal dari objek transaksi
-                   String tanggal_checkin = transaksi.getTanggalCheckin();
-                   String tanggal_checkout = transaksi.getTanggalCheckout();
-//                   String total = transaksi.getTotal();
+           public void onResponse(Call<TransaksiNik> call, Response<TransaksiNik> response) {
+               if (response.isSuccessful() && response.body() != null && response.body().isSuccess()){
+                   List<DataItem> transaksiModelList = response.body().getData();
+                   transaksiAdapter adapter =  new transaksiAdapter(getContext(), transaksiModelList);
+                   recyclerView.setAdapter(adapter);
 
-                   // Lakukan sesuatu dengan tanggal, seperti menampilkannya atau memprosesnya lebih lanjut
-                   System.out.println("Tanggal transaksi checkin: " + tanggal_checkin);
-                   System.out.println("Tanggal transaksi checkout: " + tanggal_checkout);
-//                   System.out.println("Total: " + total);
+                   // Tambahkan System.out.println() untuk melihat data berhasil terpanggil
+//                   System.out.println("Data berhasil terpanggil:");
+                   for (DataItem transaksi : transaksiModelList) {
+                       System.out.println("ID Transaksi: " + transaksi.getNik());
+                       System.out.println("Tanggal Checkin: " + transaksi.getTanggalCheckin());
+                       System.out.println("Tanggal Checkout: " + transaksi.getTanggalCheckout());
+                       // Tambahkan informasi lainnya sesuai kebutuhan
+                   }
                }
            }
 
            @Override
-           public void onFailure(Call<List<TransaksiModelItem>> call, Throwable t) {
-
+           public void onFailure(Call<TransaksiNik> call, Throwable t) {
+               Toast.makeText(getContext(), "An error has occured", Toast.LENGTH_LONG).show();
            }
        });
     }

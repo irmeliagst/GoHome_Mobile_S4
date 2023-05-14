@@ -1,54 +1,50 @@
 package com.example.gohome_mobile_s4;
 
 
+import static android.widget.Toast.makeText;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.Calendar;
 import java.util.Locale;
 
 public class BookingActivity extends AppCompatActivity {
-    Button btnbooking;
-    private Button btnCheckin, btnCheckout;
-    private TextView tipeKamar, noKamar, checkin, checkout, bookingId, namaPlg, nik;
-    private ImageView gambarKamar;
-
+    Button btnCheckin, btnCheckout, btnTf;
+    TextView txt_nama, txt_nik, txt, txt_nomor, txt_Jkamar, tgl_checkin, tgl_checkout, txt_total, note;
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_booking);
-
-        // Inisialisasi tombol "Book Room"
-        btnbooking = findViewById(R.id.btnbooking);
-        btnbooking.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Arahkan ke halaman pemesanan (bukti transfer)
-                Intent intent = new Intent(BookingActivity.this,BuktiTransferActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        // Menghubungkan variabel dengan view
+        setContentView(R
+                .layout.activity_booking);
         btnCheckin = findViewById(R.id.btncheckin);
         btnCheckout = findViewById(R.id.btncheckout);
-//        btnbooking = findViewById(R.id.btnbooking);
-        tipeKamar = findViewById(R.id.tipekamar);
-        noKamar = findViewById(R.id.nokamar);
-        checkin = findViewById(R.id.checkin);
-        checkout = findViewById(R.id.checkout);
-        bookingId = findViewById(R.id.bookingid);
-        namaPlg = findViewById(R.id.nama_plg);
-        nik = findViewById(R.id.nik);
-        gambarKamar = findViewById(R.id.gambarkamar);
+        btnTf = findViewById(R.id.btnTf);
+        txt = findViewById(R.id.txt);
+        txt_Jkamar = findViewById(R.id.txt_Jkamar);
+        txt_nama = findViewById(R.id.txt_name);
+        txt_nik = findViewById(R.id.txt_nik);
+        txt_nomor = findViewById(R.id.txt_nomor);
+        tgl_checkin = findViewById(R.id.tgl_checkin);
+        tgl_checkout = findViewById(R.id.tgl_checkout);
+        txt_total = findViewById(R.id.txt_total);
+        note = findViewById(R.id.note);
 
+        // Menghubungkan variabel dengan view
         // Menambahkan onClickListener ke btnCheckin
         btnCheckin.setOnClickListener(view -> {
             Calendar calendar = Calendar.getInstance();
@@ -61,11 +57,9 @@ public class BookingActivity extends AppCompatActivity {
                     (datePicker, year1, month1, day) -> {
                         month1 += 1; // Januari dimulai dari 0
                         String selectedDate = String.format(Locale.getDefault(), "%02d/%02d/%d", day, month1, year1);
-                        checkin.setText(selectedDate); // Menampilkan tanggal yang dipilih pada TextView checkin
+                        tgl_checkin.setText(selectedDate); // Menampilkan tanggal yang dipilih pada TextView checkin
                     },
-                    year,
-                    month,
-                    dayOfMonth);
+                    year, month, dayOfMonth);
             datePickerDialog.show();
         });
 
@@ -81,26 +75,27 @@ public class BookingActivity extends AppCompatActivity {
                     (datePicker, year1, month1, day) -> {
                         month1 += 1; // Januari dimulai dari 0
                         String selectedDate = String.format(Locale.getDefault(), "%02d/%02d/%d", day, month1, year1);
-                        checkout.setText(selectedDate); // Menampilkan tanggal yang dipilih pada TextView checkout
+                        tgl_checkout.setText(selectedDate); // Menampilkan tanggal yang dipilih pada TextView checkout
                     },
-                    year,
-                    month,
-                    dayOfMonth);
-            datePickerDialog.show();
+                                year,
+                                month,
+                                dayOfMonth);
+                        datePickerDialog.show();
         });
 
-        // Menambahkan onClickListener ke btnBooking
-//        btnbooking.setOnClickListener(view -> {
-//            // Melakukan proses booking dan menampilkan ID booking pada TextView bookingId
-//            String idBooking = doBooking();
-//            bookingId.setText(idBooking);
-//        });
-    }
-
-//    private String doBooking() {
-//        // Menyimpan data booking pada database atau web service
-//        // Mengembalikan ID booking
-//        return "ABC123";
-//    }
-}
-
+        btnTf.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    PackageManager pm = getApplicationContext().getPackageManager();
+                    pm.getPackageInfo("com.whatsapp", PackageManager.GET_ACTIVITIES);
+                    Intent intent = new Intent(Intent.ACTION_VIEW);
+                    intent.setData(Uri.parse("https://wa.me/+6282127686455?text=Halo, ini pesan dari aplikasi saya."));
+                    startActivity(intent);
+                } catch (PackageManager.NameNotFoundException e) {
+                    Toast.makeText(getApplicationContext(), "Aplikasi WhatsApp tidak terpasang.", Toast.LENGTH_SHORT).show();
+                    e.printStackTrace();
+                }
+            }
+        });
+    }}

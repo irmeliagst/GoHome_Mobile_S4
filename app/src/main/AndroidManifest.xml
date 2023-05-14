@@ -52,6 +52,7 @@
             android:exported="false" />
         <activity
             android:name=".RegisActivity"
+            android:theme="@style/Theme.GoHome_Mobile_S4.NoActionBar2"
             android:exported="false" />
         <activity
             android:name=".LoginActivity"
