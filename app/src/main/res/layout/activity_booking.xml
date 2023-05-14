@@ -35,13 +35,14 @@
         app:layout_constraintTop_toTopOf="@+id/guideline" >
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:padding="10dp">
 
             <TextView
                 android:id="@+id/txt_name"
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="20dp"
                 android:fontFamily="@font/semi_bold"
                 android:text="Siwi Indri"
                 android:textColor="@color/black"
@@ -94,27 +95,29 @@
                 android:id="@+id/group3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 app:layout_constraintStart_toStartOf="@+id/group2"
-                app:layout_constraintTop_toBottomOf="@+id/group2">
-                <Button
-                    android:id="@+id/btncheckin"
-                    android:layout_width="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/group2"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/txt_checkin"
+                    android:layout_width="120dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Tanggal Checkin"
-                    app:backgroundTint="@color/Primary"
-                    android:layout_weight="1"
-                    android:layout_marginRight="5dp"/>
-                <Button
-                    android:id="@+id/btncheckout"
-                    android:layout_width="wrap_content"
+                    android:fontFamily="@font/regular"
+                    android:text="Tanggal Check In"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:layout_weight="1"/>
+                <TextView
+                    android:id="@+id/tgl_checkin"
+                    android:layout_width="120dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Tanggal Checkout"
-                    app:backgroundTint="@color/Primary"
-                    android:layout_weight="1"
-                    android:layout_marginLeft="5dp"/>
+                    android:fontFamily="@font/semi_bold"
+                    android:text="20-12-2022"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:layout_weight="0.4"/>
             </LinearLayout>
             <LinearLayout
                 android:id="@+id/group4"
@@ -124,12 +127,12 @@
                 app:layout_constraintTop_toBottomOf="@+id/group3"
                 android:orientation="horizontal">
                 <TextView
-                    android:id="@+id/tgl_checkin"
-                    android:layout_width="120dp"
+                    android:id="@+id/txt_checkout"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:fontFamily="@font/semi_bold"
-                    android:text="20-12-2023"
+                    android:fontFamily="@font/regular"
+                    android:text="Tanggal Check Out"
                     android:textColor="@color/black"
                     android:textSize="20sp"
                     android:layout_weight="1"/>
