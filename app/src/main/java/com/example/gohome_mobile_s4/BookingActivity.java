@@ -53,7 +53,7 @@ public class BookingActivity extends AppCompatActivity {
                     PackageManager pm = getApplicationContext().getPackageManager();
                     pm.getPackageInfo("com.whatsapp", PackageManager.GET_ACTIVITIES);
                     Intent intent = new Intent(Intent.ACTION_VIEW);
-                    intent.setData(Uri.parse("https://wa.me/+6282127686455?text=Halo, ini pesan dari aplikasi saya."));
+                    intent.setData(Uri.parse("https://wa.me/+6282127686455?text=Halo, saya booking kamar ini bukti transfernya."));
                     startActivity(intent);
                 } catch (PackageManager.NameNotFoundException e) {
                     Toast.makeText(getApplicationContext(), "Aplikasi WhatsApp tidak terpasang.", Toast.LENGTH_SHORT).show();

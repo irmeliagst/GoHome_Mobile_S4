@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/Primary"
+    android:background="#187F83"
     tools:context=".BookingActivity">
 
     <androidx.constraintlayout.widget.Guideline
@@ -70,16 +70,17 @@
                 app:layout_constraintStart_toStartOf="@+id/txt_nik"
                 app:layout_constraintTop_toBottomOf="@+id/txt_nik"
                 android:orientation="horizontal">
+
                 <TextView
                     android:id="@+id/txt_Jkamar"
-                    android:layout_width="120dp"
+                    android:layout_width="180dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
+                    android:layout_weight="1"
                     android:fontFamily="@font/semi_bold"
                     android:text="Suite Room"
                     android:textColor="@color/black"
-                    android:textSize="20sp"
-                    android:layout_weight="1"/>
+                    android:textSize="20sp" />
                 <TextView
                     android:id="@+id/txt_nomor"
                     android:layout_width="120dp"
@@ -98,16 +99,17 @@
                 app:layout_constraintStart_toStartOf="@+id/group2"
                 app:layout_constraintTop_toBottomOf="@+id/group2"
                 android:orientation="horizontal">
+
                 <TextView
                     android:id="@+id/txt_checkin"
-                    android:layout_width="120dp"
+                    android:layout_width="162dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
+                    android:layout_weight="1"
                     android:fontFamily="@font/regular"
                     android:text="Tanggal Check In"
                     android:textColor="@color/black"
-                    android:textSize="20sp"
-                    android:layout_weight="1"/>
+                    android:textSize="20sp" />
                 <TextView
                     android:id="@+id/tgl_checkin"
                     android:layout_width="120dp"
@@ -126,16 +128,17 @@
                 app:layout_constraintStart_toStartOf="@+id/group3"
                 app:layout_constraintTop_toBottomOf="@+id/group3"
                 android:orientation="horizontal">
+
                 <TextView
                     android:id="@+id/txt_checkout"
-                    android:layout_width="wrap_content"
+                    android:layout_width="171dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
+                    android:layout_weight="1"
                     android:fontFamily="@font/regular"
                     android:text="Tanggal Check Out"
                     android:textColor="@color/black"
-                    android:textSize="20sp"
-                    android:layout_weight="1"/>
+                    android:textSize="20sp" />
                 <TextView
                     android:id="@+id/tgl_checkout"
                     android:layout_width="120dp"
@@ -154,16 +157,17 @@
                 app:layout_constraintStart_toStartOf="@+id/group4"
                 app:layout_constraintTop_toBottomOf="@+id/group4"
                 android:orientation="horizontal">
+
                 <TextView
                     android:id="@+id/txt"
-                    android:layout_width="120dp"
+                    android:layout_width="175dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
+                    android:layout_weight="1"
                     android:fontFamily="@font/semi_bold"
                     android:text="Total"
                     android:textColor="@color/black"
-                    android:textSize="20sp"
-                    android:layout_weight="1"/>
+                    android:textSize="20sp" />
                 <TextView
                     android:id="@+id/txt_total"
                     android:layout_width="120dp"
@@ -175,29 +179,31 @@
                     android:textSize="20sp"
                     android:layout_weight="1"/>
             </LinearLayout>
+
             <TextView
                 android:id="@+id/note"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:fontFamily="@font/regular"
-                android:text="Silahkan transfer pembayaran ke Rekening 1233550988"
+                android:layout_marginStart="4dp"
+                android:layout_marginLeft="4dp"
+                android:layout_marginTop="72dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/semi_bold"
+                android:text="Silahkan transfer ke no rekening BRI : 392747873837388 An. siti"
                 android:textColor="@color/black"
                 android:textSize="20sp"
-                android:layout_weight="1"
                 app:layout_constraintStart_toStartOf="@+id/group5"
-                app:layout_constraintTop_toBottomOf="@+id/group5"/>
+                app:layout_constraintTop_toBottomOf="@+id/group5" />
+
             <Button
                 android:id="@+id/btnTf"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="56dp"
                 android:text="Upload Bukti Transfer"
-                app:backgroundTint="@color/Primary"
-                android:layout_marginRight="5dp"
+                app:backgroundTint="#187F83"
                 app:layout_constraintStart_toStartOf="@+id/note"
-                app:layout_constraintTop_toBottomOf="@+id/note"/>
-
+                app:layout_constraintTop_toBottomOf="@+id/note" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

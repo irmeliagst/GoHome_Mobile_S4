@@ -29,10 +29,6 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".BuktiTransferActivity"
-            android:theme="@style/Theme.GoHome_Mobile_S4.NoActionBar2"
-            android:exported="false" />
-        <activity
             android:name=".BookingActivity"
             android:theme="@style/Theme.GoHome_Mobile_S4.NoActionBar2"
             android:exported="false" />
