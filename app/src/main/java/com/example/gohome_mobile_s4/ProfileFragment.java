@@ -13,9 +13,12 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.gohome_mobile_s4.retrofit.ApiInterface;
+
 
 public class ProfileFragment extends Fragment {
-
+    SesionManager sesionManager;
+    ApiInterface apiInterface;
     public ProfileFragment() {
         // Required empty public constructor
     }
@@ -26,8 +29,9 @@ public class ProfileFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
         TextView profileInitials = view.findViewById(R.id.profile_initials);
+        sesionManager = new SesionManager(requireContext());
         // Ambil inisial dari nama dan tampilkan pada TextView
-        String name = "Siwi Indriyana";
+        String name = sesionManager.getUserDetail().get(SesionManager.NAMA_PENGUNJUNG);
         String initials = getInitials(name);
         profileInitials.setText(initials);
         Button btnprofile = view.findViewById(R.id.btnProfile);
@@ -57,6 +61,11 @@ public class ProfileFragment extends Fragment {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         // Logout logic here
+                        SesionManager sesionManager = new SesionManager(getContext());
+                        sesionManager.logoutSession();
+                        Intent intent = new Intent(getActivity(), LoginActivity.class);
+                        startActivity(intent);
+                        getActivity().finish();
                     }
                 });
                 builder.setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
