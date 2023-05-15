@@ -29,11 +29,13 @@ public class ProfileFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
         TextView profileInitials = view.findViewById(R.id.profile_initials);
+        TextView name_profile = view.findViewById(R.id.name_profile);
         sesionManager = new SesionManager(requireContext());
         // Ambil inisial dari nama dan tampilkan pada TextView
         String name = sesionManager.getUserDetail().get(SesionManager.NAMA_PENGUNJUNG);
         String initials = getInitials(name);
         profileInitials.setText(initials);
+        name_profile.setText(name);
         Button btnprofile = view.findViewById(R.id.btnProfile);
         btnprofile.setOnClickListener(new View.OnClickListener() {
             @Override
