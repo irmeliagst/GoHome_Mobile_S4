@@ -50,6 +50,8 @@
                     android:text="Tanggal Checkin"
                     app:backgroundTint="@color/Primary"
                     android:layout_weight="1"
+                    android:textSize="15sp"
+                    android:textAllCaps="false"
                     android:layout_marginRight="5dp"/>
                 <Button
                     android:id="@+id/btncheckout"
@@ -59,6 +61,8 @@
                     android:text="Tanggal Checkout"
                     app:backgroundTint="@color/Primary"
                     android:layout_weight="1"
+                    android:textSize="15sp"
+                    android:textAllCaps="false"
                     android:layout_marginLeft="5dp"/>
             </LinearLayout>
             <LinearLayout

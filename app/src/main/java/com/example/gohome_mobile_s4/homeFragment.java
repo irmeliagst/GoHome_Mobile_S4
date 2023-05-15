@@ -53,6 +53,8 @@ public class homeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         btnCheckin = view.findViewById(R.id.btncheckin);
         btnCheckout = view.findViewById(R.id.btncheckout);
+        set_checkin = view.findViewById(R.id.set_checkin);
+        set_checkout = view.findViewById(R.id.set_checkout);
         recyclerView = view.findViewById(R.id.kamar_tampil);
         layoutManager = new LinearLayoutManager(getContext());
         layoutManager.setOrientation(RecyclerView.VERTICAL);
