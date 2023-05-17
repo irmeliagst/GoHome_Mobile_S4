@@ -3,6 +3,7 @@ package com.example.gohome_mobile_s4;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -20,7 +21,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class EdtprofActivity extends AppCompatActivity {
-    String nik, email, nama_pengunjung, telepon;
+    String Nik, Email, Nama_pengunjung, Telepon;
     EditText txtNama, txtEmail, txtTelpon;
     Button btnSimpan;
     Button updated;
@@ -60,11 +61,11 @@ public class EdtprofActivity extends AppCompatActivity {
 
                     case R.id.btnSimpan:
 
-                        nik = sesionManager.getUserDetail().get(SesionManager.NIK);
-                        email = txtEmail.getText().toString().isEmpty() ? sesionManager.getUserDetail().get(SesionManager.EMAIL) : txtEmail.getText().toString();
-                        nama_pengunjung = txtNama.getText().toString().isEmpty() ? sesionManager.getUserDetail().get(SesionManager.NAMA_PENGUNJUNG) : txtNama.getText().toString();
-                        telepon = txtTelpon.getText().toString().isEmpty() ? sesionManager.getUserDetail().get(SesionManager.TELEPON) : txtTelpon.getText().toString();
-                        kirim(nik, nama_pengunjung, telepon, email);
+                        Nik = sesionManager.getUserDetail().get(SesionManager.NIK);
+                        Email = txtEmail.getText().toString().isEmpty() ? sesionManager.getUserDetail().get(SesionManager.EMAIL) : txtEmail.getText().toString();
+                        Nama_pengunjung = txtNama.getText().toString().isEmpty() ? sesionManager.getUserDetail().get(SesionManager.NAMA_PENGUNJUNG) : txtNama.getText().toString();
+                        Telepon = txtTelpon.getText().toString().isEmpty() ? sesionManager.getUserDetail().get(SesionManager.TELEPON) : txtTelpon.getText().toString();
+                        kirim(Nik, Nama_pengunjung, Email, Telepon);
                         break;
 
 
@@ -74,14 +75,19 @@ public class EdtprofActivity extends AppCompatActivity {
 
     }
 
-    private void kirim(String nik, String nama_pengunjung, String telepon, String email) {
+    private void kirim(String nik, String nama_pengunjung, String email, String telepon) {
         apiInterface = RetrofitClient.getInstance().getMyApi();
-        Call<Profile> Ucall = apiInterface.updateAkun(nik, email, nama_pengunjung, telepon);
+        Call<Profile> Ucall = apiInterface.updateAkun(nik, nama_pengunjung, email,  telepon);
         Ucall.enqueue(new Callback<Profile>() {
             @Override
             public void onResponse(Call<Profile> call, Response<Profile> response) {
                 if (response.isSuccessful() && response.body() != null && response.body().isSuccess()) {
+                    SesionManager sesionManager = new SesionManager(EdtprofActivity.this);
                     Toast.makeText(EdtprofActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                    sesionManager.logoutSession();
+                    Intent intent = new Intent(EdtprofActivity.this, LoginActivity.class);
+                    startActivity(intent);
+                    finish();
                     Log.d("GETDATA" , response.body().getMessage());
                     System.err.println(response.body());
                 } else {
