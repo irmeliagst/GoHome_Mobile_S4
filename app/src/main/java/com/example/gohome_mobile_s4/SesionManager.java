@@ -45,6 +45,12 @@ public class SesionManager {
         return user;
 
     }
+    public void updateUserDetail(String telepon, String nama_pengunjung, String email) {
+        editor.putString(TELEPON, telepon);
+        editor.putString(NAMA_PENGUNJUNG, nama_pengunjung);
+        editor.putString(EMAIL, email);
+        editor.commit();
+    }
 
     public void logoutSession(){
         editor.clear();
