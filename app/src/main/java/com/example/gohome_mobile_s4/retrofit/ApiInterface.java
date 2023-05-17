@@ -1,11 +1,10 @@
 package com.example.gohome_mobile_s4.retrofit;
 
 import com.example.gohome_mobile_s4.Model.HomeModel;
+import com.example.gohome_mobile_s4.Model.filter.FilterTersediaItem;
 import com.example.gohome_mobile_s4.Model.login.Login;
 import com.example.gohome_mobile_s4.Model.profile.Profile;
 import com.example.gohome_mobile_s4.Model.register.Register;
-import com.example.gohome_mobile_s4.Model.transaksi.TransaksiModelItem;
-import com.example.gohome_mobile_s4.Model.transaksiNik.DataItem;
 import com.example.gohome_mobile_s4.Model.transaksiNik.TransaksiNik;
 
 import java.util.List;
@@ -15,9 +14,10 @@ import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Query;
 
 public interface ApiInterface {
-    String BASE_URL = "http://192.168.0.121:8000/api/";
+    String BASE_URL = "http://192.168.0.110:8000/api/";
 
     @FormUrlEncoded
     @POST("login")
@@ -48,7 +48,13 @@ public interface ApiInterface {
             @Field("nama_pengunjung") String nama_pengunjung,
             @Field("email") String email,
             @Field("telepon") String telepon);
-
-
     // lets make our model class of json data .
+
+    @GET("filter_tersedia")
+    Call<FilterTersediaItem> filterTersedia(
+            @Query("tanggal_checkin_awal") String tanggalCheckinAwal,
+            @Query("tanggal_checkin_akhir") String tanggalCheckinAkhir,
+            @Query("tanggal_checkout_awal") String tanggalCheckoutAwal,
+            @Query("tanggal_checkout_akhir") String tanggalCheckoutAkhir
+    );
 }

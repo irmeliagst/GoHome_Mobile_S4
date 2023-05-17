@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,7 @@ import android.widget.Toast;
 
 import com.example.gohome_mobile_s4.Adapter.HomeAdapter;
 import com.example.gohome_mobile_s4.Model.HomeModel;
+import com.example.gohome_mobile_s4.Model.Tanggal;
 import com.example.gohome_mobile_s4.retrofit.ApiInterface;
 import com.example.gohome_mobile_s4.retrofit.RetrofitClient;
 import com.google.gson.Gson;
@@ -34,11 +36,12 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class homeFragment extends Fragment {
-    Button btnCheckin, btnCheckout;
+    Button btnCheckin, btnCheckout, btnFilter;
     TextView set_checkin, set_checkout;
     private RecyclerView recyclerView;
     private HomeAdapter myAdapter;
     private List<HomeModel> kamarList;
+    Tanggal tanggal = new Tanggal();
     private LinearLayoutManager layoutManager;
 
 
@@ -53,6 +56,7 @@ public class homeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         btnCheckin = view.findViewById(R.id.btncheckin);
         btnCheckout = view.findViewById(R.id.btncheckout);
+        btnFilter = view.findViewById(R.id.btnFilter);
         set_checkin = view.findViewById(R.id.set_checkin);
         set_checkout = view.findViewById(R.id.set_checkout);
         recyclerView = view.findViewById(R.id.kamar_tampil);
@@ -60,6 +64,15 @@ public class homeFragment extends Fragment {
         layoutManager.setOrientation(RecyclerView.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);
         getKamar();
+
+        btnFilter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+
+                System.out.println(tanggal.getTanggal_checkin() +" "+tanggal.getTanggal_checkout() );
+            }
+        });
         btnCheckin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -71,6 +84,8 @@ public class homeFragment extends Fragment {
             DatePickerDialog datePickerDialog = new DatePickerDialog(getActivity(), (datePicker, year1, month1, day) -> {
                         month1 += 1; // Januari dimulai dari 0
                         String selectedDate = String.format(Locale.getDefault(), "%02d/%02d/%d", day, month1, year1);
+//                        Tanggal tanggal = new Tanggal();
+                        tanggal.setTanggal_checkin(selectedDate);
                         set_checkin.setText(selectedDate); // Menampilkan tanggal yang dipilih pada TextView checkin
                     },
                     year, month, dayOfMonth);
@@ -90,6 +105,8 @@ public class homeFragment extends Fragment {
                     (datePicker, year1, month1, day) -> {
                         month1 += 1; // Januari dimulai dari 0
                         String selectedDate = String.format(Locale.getDefault(), "%02d/%02d/%d", day, month1, year1);
+//                        Tanggal tanggal = new Tanggal();
+                        tanggal.setTanggal_checkout(selectedDate);
                         set_checkout.setText(selectedDate); // Menampilkan tanggal yang dipilih pada TextView checkout
                     },
                     year,
@@ -118,4 +135,5 @@ public class homeFragment extends Fragment {
 
         });
     }
+
 }
