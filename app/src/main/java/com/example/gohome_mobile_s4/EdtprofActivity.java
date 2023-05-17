@@ -83,6 +83,7 @@ public class EdtprofActivity extends AppCompatActivity {
                 if (response.isSuccessful() && response.body() != null && response.body().isSuccess()) {
                     Toast.makeText(EdtprofActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                     Log.d("GETDATA" , response.body().getMessage());
+                    System.err.println(response.body());
                 } else {
                     System.err.println(response.body());
                     Toast.makeText(EdtprofActivity.this, "Update failed: " + response.body().getMessage(), Toast.LENGTH_SHORT).show();

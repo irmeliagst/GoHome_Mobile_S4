@@ -17,7 +17,7 @@ import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 public interface ApiInterface {
-    String BASE_URL = "http://10.10.177.11:8000/api/";
+    String BASE_URL = "http://192.168.0.121:8000/api/";
 
     @FormUrlEncoded
     @POST("login")
@@ -43,10 +43,10 @@ public interface ApiInterface {
             @Field("nik") String nik);
     @FormUrlEncoded
     @POST("updateProfile")
-    Call<Profile>updateAkun(
+    Call<Profile> updateAkun(
+            @Field("nik") String nik,
             @Field("nama_pengunjung") String nama_pengunjung,
             @Field("email") String email,
-            @Field("password") String password,
             @Field("telepon") String telepon);
 
 
