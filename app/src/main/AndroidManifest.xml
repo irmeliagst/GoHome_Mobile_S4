@@ -45,7 +45,9 @@
         <activity
             android:name=".BottomnavActivity"
             android:theme="@style/Theme.GoHome_Mobile_S4.NoActionBar2"
-            android:exported="false" />
+            android:exported="true" >
+
+        </activity>
         <activity
             android:name=".RegisActivity"
             android:theme="@style/Theme.GoHome_Mobile_S4.NoActionBar2"
@@ -58,12 +60,12 @@
             android:name=".MainActivity"
             android:theme="@style/Theme.GoHome_Mobile_S4.NoActionBar2"
             android:exported="true">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
 
     </application>
