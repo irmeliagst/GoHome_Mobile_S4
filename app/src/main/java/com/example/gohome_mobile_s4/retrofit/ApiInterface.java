@@ -19,7 +19,7 @@ import retrofit2.http.POST;
 import retrofit2.http.Path;
 
 public interface ApiInterface {
-    String BASE_URL = "http://192.168.1.25:8000/api/";
+    String BASE_URL = "http://192.168.1.18:8000/api/";
 
     @FormUrlEncoded
     @POST("login")
