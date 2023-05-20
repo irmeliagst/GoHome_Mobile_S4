@@ -135,6 +135,7 @@
                 android:textColorHint="@color/black"
                 android:paddingRight="8dp"
                 android:paddingLeft="8dp"
+                app:counterMaxLength="8"
                 app:boxStrokeColor="@color/Primary">
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/passEdit"
@@ -144,6 +145,7 @@
                     android:textColor="@color/black"
                     android:fontFamily="@font/medium"
                     android:textSize="16sp"
+                    android:maxLength="8"
                     android:paddingTop="10dp"
                     android:paddingBottom="10dp"
                     android:gravity="start"/>
