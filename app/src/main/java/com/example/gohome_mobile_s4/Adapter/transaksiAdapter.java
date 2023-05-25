@@ -14,6 +14,7 @@ import com.example.gohome_mobile_s4.R;
 import com.example.gohome_mobile_s4.SesionManager;
 import com.example.gohome_mobile_s4.retrofit.ApiInterface;
 import com.example.gohome_mobile_s4.retrofit.RetrofitClient;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -38,6 +39,7 @@ public class transaksiAdapter extends RecyclerView.Adapter <transaksiAdapter.Vie
 
     @Override
     public void onBindViewHolder(@NonNull transaksiAdapter.Viewholder holder, int position) {
+        Picasso.get().load("http://192.168.1.36:8000/images/"+transaksiModelList.get(position).getGambar_kamar()).into(holder.gambar_kamar);
         final DataItem transaksi = transaksiModelList.get(position);
         final String NIK = sesionManager.getUserDetail().get(SesionManager.NIK);
         final String Nik = String.valueOf(transaksiModelList.get(position).getNik());

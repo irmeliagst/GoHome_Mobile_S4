@@ -7,6 +7,17 @@ public class DataItem{
 	@SerializedName("nik")
 	private long nik;
 
+	public String getGambar_kamar() {
+		return gambar_kamar;
+	}
+
+	public void setGambar_kamar(String gambar_kamar) {
+		this.gambar_kamar = gambar_kamar;
+	}
+
+	@SerializedName("gambar_kamar")
+	private String gambar_kamar;
+
 	@SerializedName("total")
 	private int total;
 

@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.gohome_mobile_s4.BookingActivity;
 import com.example.gohome_mobile_s4.Model.HomeModel;
 import com.example.gohome_mobile_s4.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -34,6 +35,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.Viewholder> {
 
     @Override
     public void onBindViewHolder(@NonNull HomeAdapter.Viewholder holder, @SuppressLint("RecyclerView") int position) {
+        Picasso.get().load("http://192.168.1.36:8000/images/"+HomeModelList.get(position).getGambar_kamar()).into(holder.item_image);
        holder.jenis_kamar.setText(HomeModelList.get(position).getjenis_kamar());
        holder.harga.setText(""+HomeModelList.get(position).getHarga());
         holder.id_kamar.setText(""+HomeModelList.get(position).getId_kamar()); //string concatenation(cari sendiri di google)
@@ -53,7 +55,10 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.Viewholder> {
 
                 intent.putExtra("nomer_kamar", HomeModelList.get(position).getNomer_kamar());
                 System.out.println("nomer_kamar "+HomeModelList.get(position).getNomer_kamar());
-              v.getContext().startActivity(intent);
+
+                System.out.println("item_image"+HomeModelList.get(position).getGambar_kamar());
+
+                v.getContext().startActivity(intent);
             }
         });
     }
