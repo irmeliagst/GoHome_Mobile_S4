@@ -178,7 +178,7 @@ public class BookingActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<Booking> call, Response<Booking> response) {
                 if (response.isSuccessful() && response.body() != null && response.body().isSuccess()) {
-                    makeText(BookingActivity.this, "hayu", Toast.LENGTH_SHORT).show();
+                    makeText(BookingActivity.this, "Berhasil booking", Toast.LENGTH_SHORT).show();
                 } else {
                     makeText(BookingActivity.this,  id_kamar , Toast.LENGTH_SHORT).show();
                     makeText(BookingActivity.this,  total , Toast.LENGTH_SHORT).show();
