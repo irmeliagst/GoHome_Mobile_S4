@@ -35,7 +35,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.Viewholder> {
 
     @Override
     public void onBindViewHolder(@NonNull HomeAdapter.Viewholder holder, @SuppressLint("RecyclerView") int position) {
-        Picasso.get().load("http://192.168.1.36:8000/images/"+HomeModelList.get(position).getGambar_kamar()).into(holder.item_image);
+        Picasso.get().load("http://192.168.43.28:8000/images/"+HomeModelList.get(position).getGambar_kamar()).into(holder.item_image);
        holder.jenis_kamar.setText(HomeModelList.get(position).getjenis_kamar());
        holder.harga.setText(""+HomeModelList.get(position).getHarga());
         holder.id_kamar.setText(""+HomeModelList.get(position).getId_kamar()); //string concatenation(cari sendiri di google)
