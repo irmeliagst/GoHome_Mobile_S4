@@ -51,7 +51,7 @@ public class BookingActivity extends AppCompatActivity {
     private String tanggal_checkin, tanggal_checkout;
 
     Tanggal tanggal = new Tanggal();
-    TextView txt_nama, txt_nik, txt_nomor, txt_Jkamar, txt_total, note, set_checkin, set_checkout;
+    TextView txt_nama, txt_nik, txt_nomor, txt_Jkamar, txt_total, note, set_checkin, set_checkout, tgl;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -77,7 +77,6 @@ public class BookingActivity extends AppCompatActivity {
         txt_nomor = findViewById(R.id.txt_nomor);
         txt_nomor.setText(nomer_kamar);
         txt_total = findViewById(R.id.txt_total);
-        set_checkin = findViewById(R.id.set_checkin);
         set_checkout = findViewById(R.id.set_checkout);
         note = findViewById(R.id.note);
         txt_nama = findViewById(R.id.txt_name);
@@ -114,25 +113,28 @@ public class BookingActivity extends AppCompatActivity {
 
             }
         });
-        btnCheckin = findViewById(R.id.btncheckin);
-        btnCheckin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Calendar calendar = Calendar.getInstance();
-                int year = calendar.get(Calendar.YEAR);
-                int month = calendar.get(Calendar.MONTH);
-                int dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH);
-                // Membuka date picker dialog saat btnCheckin diklik
-                DatePickerDialog datePickerDialog = new DatePickerDialog(BookingActivity.this, (datePicker, year1, month1, day) -> {
-                    month1 += 1; // Januari dimulai dari 0
-                    String selectedDate = String.format(Locale.getDefault(), "%02d-%02d-%d", day, month1, year1);
-                    tanggal.setTanggal_checkin(selectedDate);
-                    set_checkin.setText(selectedDate); // Menampilkan tanggal yang dipilih pada TextView checkin
-                },
-                        year, month, dayOfMonth);
-                datePickerDialog.show();
-            }
-        });
+//        btnCheckin = findViewById(R.id.btncheckin);
+//        btnCheckin.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Calendar calendar = Calendar.getInstance();
+//                int year = calendar.get(Calendar.YEAR);
+//                int month = calendar.get(Calendar.MONTH);
+//                int dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH);
+//                String selectedDate = String.format(Locale.getDefault(), "%02d-%02d-%d", dayOfMonth, month + 1, year);
+//                tanggal.setTanggal_checkin(selectedDate);
+//                set_checkin.setText(selectedDate);
+//            }
+//        });
+        set_checkin = findViewById(R.id.set_checkin);// Ganti dengan ID TextView yang sesuai
+        Calendar calendar = Calendar.getInstance();
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH);
+        int dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH);
+        String selectedDate = String.format(Locale.getDefault(), "%02d-%02d-%d", dayOfMonth, month + 1, year);
+        tanggal.setTanggal_checkin(selectedDate);
+        set_checkin.setText(selectedDate);
+
         // Menambahkan onClickListener ke btnCheckout
         btnCheckout = findViewById(R.id.btncheckout);
         btnCheckout.setOnClickListener(new View.OnClickListener() {
